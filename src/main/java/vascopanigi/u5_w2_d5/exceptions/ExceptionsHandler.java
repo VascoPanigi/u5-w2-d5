@@ -33,6 +33,6 @@ public class ExceptionsHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorsDTO handleGenericErrors(Exception exception) {
         exception.printStackTrace();
-        return new ErrorsDTO("There's a problem with the server!", LocalDateTime.now());
+        return new ErrorsDTO("There's a problem with the server, go insult the backend devs!", LocalDateTime.now());
     }
 }

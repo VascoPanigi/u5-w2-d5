@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.UUID;
 
 @Setter
@@ -27,6 +26,8 @@ public class Employee {
     private String username;
 
     private String email;
+
+    private String avatarURL;
 
     public Employee(String name, String surname, String username, String email) {
         this.name = name;
