@@ -69,7 +69,7 @@ public class EmployeeService {
         Employee found = this.findById(employeeId);
         this.employeeRepository.delete(found);
     }
-    
+
     //----- gestione della save nel cloud -----
     public String uploadAvatarImage(MultipartFile file) throws IOException {
         return (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
