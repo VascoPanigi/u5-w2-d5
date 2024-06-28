@@ -1,6 +1,7 @@
 package vascopanigi.u5_w2_d5.config;
 
 import com.cloudinary.Cloudinary;
+import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,5 +21,10 @@ public class ServerConfig {
         configuration.put("api_key", key);
         configuration.put("api_secret", secret);
         return new Cloudinary(configuration);
+    }
+
+    @Bean
+    public Faker faker() {
+        return new Faker();
     }
 }

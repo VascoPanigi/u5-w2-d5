@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class ExceptionsHandler {
 
-    @ExceptionHandler(InvalidRequestException.class)
+    @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorsDTO handleBadRequest(InvalidRequestException exception) {
+    public ErrorsDTO handleBadRequest(BadRequestException exception) {
         if (exception.getErrorList() != null) {
             String message = exception.getErrorList().stream().map(objectError -> objectError.getDefaultMessage()).collect(Collectors.joining(". "));
             return new ErrorsDTO(message, LocalDateTime.now());

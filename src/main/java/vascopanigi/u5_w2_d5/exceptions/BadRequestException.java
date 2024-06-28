@@ -6,14 +6,14 @@ import org.springframework.validation.ObjectError;
 import java.util.List;
 
 @Getter
-public class InvalidRequestException extends RuntimeException {
+public class BadRequestException extends RuntimeException {
     private List<ObjectError> errorList;
 
-    public InvalidRequestException(String message) {
+    public BadRequestException(String message) {
         super(message);
     }
 
-    public InvalidRequestException(List<ObjectError> errorList) {
+    public BadRequestException(List<ObjectError> errorList) {
         super("There were errors with payload validation.");
         this.errorList = errorList;
     }
