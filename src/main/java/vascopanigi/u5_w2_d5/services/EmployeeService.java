@@ -56,13 +56,13 @@ public class EmployeeService {
         return employeeRepository.save(newEmployee);
     }
 
-    public Employee findById(UUID authorId) {
-        return this.employeeRepository.findById(authorId).orElseThrow(() -> new NotFoundException(authorId));
+    public Employee findById(UUID employeeId) {
+        return this.employeeRepository.findById(employeeId).orElseThrow(() -> new NotFoundException(employeeId));
     }
 
 
-    public Employee findByIdAndUpdate(UUID userId, Employee modifiedUser) {
-        Employee found = this.findById(userId);
+    public Employee findByIdAndUpdate(UUID employeeId, Employee modifiedUser) {
+        Employee found = this.findById(employeeId);
         found.setName(modifiedUser.getName());
         found.setSurname(modifiedUser.getSurname());
         found.setEmail(modifiedUser.getEmail());
@@ -81,8 +81,8 @@ public class EmployeeService {
         return (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
     }
 
-    public Employee patchNewAvatar(UUID authorId, String avatarUrl) {
-        Employee employee = findById(authorId);
+    public Employee patchNewAvatar(UUID employeeId, String avatarUrl) {
+        Employee employee = findById(employeeId);
         employee.setAvatarURL(avatarUrl);
         return this.employeeRepository.save(employee);
     }
