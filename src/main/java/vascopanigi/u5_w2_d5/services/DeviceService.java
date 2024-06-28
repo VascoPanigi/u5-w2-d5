@@ -53,6 +53,7 @@ public class DeviceService {
             throw new BadRequestException("Device with ID " + deviceId + " is not available. It is currently " + found.getDeviceStatus());
         }
         found.setEmployee(employeeService.findById(body.employeeId()));
+        found.setDeviceStatus(DeviceStatus.ASSIGNED);
         return this.deviceRepository.save(found);
     }
 
