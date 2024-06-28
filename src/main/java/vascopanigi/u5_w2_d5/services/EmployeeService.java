@@ -17,8 +17,6 @@ import vascopanigi.u5_w2_d5.payloads.NewEmployeeDTO;
 import vascopanigi.u5_w2_d5.repositories.EmployeeRepository;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -48,8 +46,6 @@ public class EmployeeService {
                     throw new BadRequestException("This email address: " + body.email() + " is already used. Try again");
                 }
         );
-
-
         Employee newEmployee = new Employee(body.name(), body.surname(), faker.name().username(), body.email());
         newEmployee.setAvatarURL("https://ui-avatars.com/api/?name=" + newEmployee.getName() + "+" + newEmployee.getSurname());
         //infine si salva
@@ -59,7 +55,6 @@ public class EmployeeService {
     public Employee findById(UUID employeeId) {
         return this.employeeRepository.findById(employeeId).orElseThrow(() -> new NotFoundException(employeeId));
     }
-
 
     public Employee findByIdAndUpdate(UUID employeeId, Employee modifiedUser) {
         Employee found = this.findById(employeeId);
@@ -74,8 +69,7 @@ public class EmployeeService {
         Employee found = this.findById(employeeId);
         this.employeeRepository.delete(found);
     }
-
-
+    
     //----- gestione della save nel cloud -----
     public String uploadAvatarImage(MultipartFile file) throws IOException {
         return (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
@@ -86,5 +80,4 @@ public class EmployeeService {
         employee.setAvatarURL(avatarUrl);
         return this.employeeRepository.save(employee);
     }
-
 }

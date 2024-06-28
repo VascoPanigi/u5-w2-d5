@@ -18,7 +18,6 @@ public class Employee {
     @GeneratedValue
     @Setter(AccessLevel.NONE)
     private UUID id;
-
     private String name;
     private String surname;
 
@@ -26,7 +25,6 @@ public class Employee {
     private String username;
 
     private String email;
-
     private String avatarURL;
 
     public Employee(String name, String surname, String username, String email) {
